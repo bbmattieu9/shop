@@ -23,6 +23,9 @@ export class ProductEditComponent implements OnInit {
     ngOnInit(){ 
       const id = +this.route.snapshot.paramMap.get('id');
       console.log('The freaking ID: ', id);
+
+
+     //gigt this.getUsers();
     }
 
 
@@ -32,6 +35,13 @@ export class ProductEditComponent implements OnInit {
       next: product => this.onProductRetrieved(product),
       error: err => this.errorMessage = err
     });
+  }
+
+
+  getUsers() {
+    this.productService.getJsonUsers().subscribe(
+      (tenData) => { console.log('The ten users are:', tenData)}
+    );
   }
 
   onProductRetrieved(product: Product): void {

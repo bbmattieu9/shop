@@ -20,28 +20,18 @@ export class ProductEditComponent implements OnInit {
     private messageService: MessageService,
     private route: ActivatedRoute) { }
 
-    ngOnInit(){ 
-      const id = +this.route.snapshot.paramMap.get('id');
-      console.log('The freaking ID: ', id);
 
-
-     //gigt this.getUsers();
-    }
-
-
+  ngOnInit() {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.getProduct(id);
+   
+  }
 
   getProduct(id: number): void {
     this.productService.getProduct(id).subscribe({
       next: product => this.onProductRetrieved(product),
       error: err => this.errorMessage = err
     });
-  }
-
-
-  getUsers() {
-    this.productService.getJsonUsers().subscribe(
-      (tenData) => { console.log('The ten users are:', tenData)}
-    );
   }
 
   onProductRetrieved(product: Product): void {
@@ -98,7 +88,5 @@ export class ProductEditComponent implements OnInit {
     // Navigate back to the product list
   }
 
-
-  
 
 }

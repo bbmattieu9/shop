@@ -14,14 +14,14 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  getJsonUsers() {
-   const url$ = 'https://dog.ceo/api/breeds/image/random';
-    return this.http.get(url$).pipe(
-      tap(data => console.log(JSON.stringify(data))),
-      catchError(this.handleError)
-    )
+  // getJsonUsers() {
+  //  const url$ = 'https://dog.ceo/api/breeds/image/random';
+  //   return this.http.get(url$).pipe(
+  //     tap(data => console.log(JSON.stringify(data))),
+  //     catchError(this.handleError)
+  //   )
     
-  }
+  // }
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productsUrl)
